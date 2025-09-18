@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import type { Course } from "@/lib/types";
 import { CourseViewer } from "./course-viewer";
+import { API_BASE } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
@@ -29,7 +30,7 @@ export function UserPanel({ courses }: UserPanelProps) {
         const fetchCourseDetails = async (courseId: string) => {
             setIsLoading(true);
             try {
-              const response = await fetch(`/api/courses/${courseId}`);
+              const response = await fetch(`${API_BASE}/api/courses/${courseId}`);
               if (!response.ok) {
                 throw new Error('Failed to fetch course details');
               }
